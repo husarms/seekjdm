@@ -10,7 +10,7 @@
 /build
 
 # dev environment
-/.idea
+.idea
 
 # misc
 .DS_Store
