@@ -6,7 +6,7 @@ const app = express();
 //const port = process.env.PORT || 5000;
 
 //Point to our react-create-app build folder
-var buildDir = _dirname + "/build/";
+var buildDir = __dirname + "/build/";
 app.use(express.static(buildDir));
 
 app.get('/api/hello', (req, res) => {
