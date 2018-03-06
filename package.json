@@ -1,9 +1,12 @@
 {
   "name": "seekjdm",
   "version": "0.1.0",
+  "proxy": "http://localhost:5000",
   "private": true,
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "path": "^0.12.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1"
