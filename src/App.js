@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import './css/app.css';
 import '../node_modules/material-components-web/dist/material-components-web.min.css';
 import '../node_modules/material-design-icons/iconfont/material-icons.css';
-import VehicleCards from './components/VehicleCards';
+import Header from './components/Header';
+import Drawer from './components/Drawer';
 import ProgressBar from './components/ProgressBar';
+import VehicleCards from './components/VehicleCards';
 
 class App extends Component {
     constructor(props) {
@@ -33,15 +35,21 @@ class App extends Component {
     render() {
         return (
             <div className="app">
+                <Header title={"Seek JDM"}/>
+                <Drawer />
+                <div className="content">
                 {
                     this.state.vehicles ?
-                        <VehicleCards vehicles={this.state.vehicles}/>
+                        <div>
+                            <VehicleCards vehicles={this.state.vehicles}/>
+                        </div>
                         :
                         <div>
                             <p>Loading...</p>
                             <ProgressBar />
                         </div>
                 }
+                </div>
             </div>
         );
     }

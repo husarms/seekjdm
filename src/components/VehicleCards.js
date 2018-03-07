@@ -26,7 +26,6 @@ class VehicleCards extends Component {
         var _this = this;
         return (
             <div>
-                <h1 className="mdc-typography--display3">Suh Dude?</h1>
                 <div className="mdc-layout-grid">
                     <div className="mdc-layout-grid__inner">
                         {
