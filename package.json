@@ -4,12 +4,19 @@
   "proxy": "http://localhost:5000",
   "private": true,
   "dependencies": {
-    "body-parser": "^1.18.2",
+    "assert": "^1.4.1",
+    "cheerio": "^1.0.0-rc.2",
+    "dateformat": "^3.0.3",
     "express": "^4.16.2",
+    "material-components-web": "^0.32.0",
+    "material-design-icons": "^3.0.1",
+    "mongodb": "^3.0.4",
     "path": "^0.12.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.1.1"
+    "react-scripts": "1.1.1",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
   },
   "scripts": {
     "start": "node server/server.js",

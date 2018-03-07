@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
-// const scrapeVehicles = require('./scrapers/scrape');
-// const dbHelper = require('./db/dbHelper');
+const scrapeVehicles = require('./scrapers/scrape');
+const dbHelper = require('./db/dbHelper');
 
 const port = process.env.PORT || 5000;
 
@@ -16,20 +16,19 @@ app.get('/api', function (req, res) {
     res.send('{"message":"Hello from the custom server running on ' + port + '"}');
 });
 
+app.get('/api/vehicles', (req, res) => {
+    scrapeVehicles(function(vehicleCount){
+        console.log("Vehicle count = " + vehicleCount);
+        dbHelper.GetVehicles(function(result){
+            res.set('Content-Type', 'application/json');
+            res.send({ vehicles: result });
+        });
+    });
+});
+
 // All remaining requests return the React app, so it can handle routing.
-// app.get('*', function(request, response) {
-//     response.sendFile(path.resolve(__dirname, '../build', 'index.html'));
-// });
-
-
-
-// app.get('/api/vehicles', (req, res) => {
-//     scrapeVehicles(function(vehicleCount){
-//         console.log("Vehicle count = " + vehicleCount);
-//         dbHelper.GetVehicles(function(result){
-//             res.send({ vehicles: result });
-//         });
-//     });
-// });
+app.get('*', function(request, response) {
+    response.sendFile(path.resolve(__dirname, '../build', 'index.html'));
+});
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

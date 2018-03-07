@@ -3,7 +3,7 @@ const assert = require('assert');
 const config = require('../../config');
 
 // Connection URL
-const url = config.mongodb.uri;
+const url = config.mongodbUri;
 
 // Database Name - After last slash in url
 const dbName = /[^/]*$/.exec(url)[0];
@@ -46,9 +46,12 @@ module.exports = {
 
             const db = client.db(dbName);
             const collection = db.collection(collectionName);
-
-            collection.drop();
-            callback("Collection '" + collectionName + "' dropped.");
+            if(collection){
+                var result = collection.drop();
+                callback("Collection '" + collectionName + "' dropped. " + result);
+            } else {
+                callback("Collection '" + collectionName + "' not found - nothing to drop!");
+            }
         });
     }
 }
