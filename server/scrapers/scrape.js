@@ -2,11 +2,33 @@ const scrapeJapaneseClassics = require('./scrapeJapaneseClassics');
 const scrapeJDMAutoImports = require('./scrapeJdmAutoImports');
 const scrapeImportAVehicle = require('./scrapeImportAVehicle');
 const dbHelper = require('../db/dbHelper');
+const config = require('../../config');
 
-var startTime = new Date().getTime();
-var currentVehicles = [],  sortedResults = [];
+var lastStartTime = new Date().getTime();
+var firstRun = true;
 
 var scrape = function(callback){
+    var currentStartTime = new Date().getTime();
+    var diffMs = currentStartTime - lastStartTime;
+    var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
+    var scrapeInterval = parseInt(config.scrapeInterval);
+
+    //Only re-scrape after a set amount of time has passed
+    if(diffMins < scrapeInterval && !firstRun){
+        console.log("Scrape last ran " + diffMins + " minutes ago, scrape interval set to " +
+            scrapeInterval + " minutes, returning...");
+        callback(0);
+        return;
+    }
+
+    //Otherwise, let's go!
+    if(firstRun){
+        console.log("Doing first run...");
+    }
+    lastStartTime = currentStartTime;
+
+    var currentVehicles = [],  sortedResults = [];
+
     var scrapers = [
         function() {
             scrapeJDMAutoImports(function (vehicles) {
@@ -89,7 +111,8 @@ var scrape = function(callback){
                 dbHelper.InsertVehicles(sortedResults, function(result){
                     console.log(result.insertedCount + " vehicles inserted.");
                     var endTime = new Date().getTime();
-                    console.log("Execution time: " + (endTime - startTime) + "ms");
+                    console.log("Execution time: " + (endTime - currentStartTime) + "ms");
+                    firstRun = false;
                     callback(result.insertedCount);
                 });
             });

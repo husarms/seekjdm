@@ -48,7 +48,7 @@ module.exports = {
             const collection = db.collection(collectionName);
             if(collection){
                 var result = collection.drop();
-                callback("Collection '" + collectionName + "' dropped. " + result);
+                callback("Collection '" + collectionName + "' dropped. " + JSON.stringify(result));
             } else {
                 callback("Collection '" + collectionName + "' not found - nothing to drop!");
             }
