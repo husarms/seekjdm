@@ -12,8 +12,10 @@
     "material-design-icons": "^3.0.1",
     "mongodb": "^3.0.4",
     "path": "^0.12.7",
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-mdc-web": "^0.17.0",
     "react-scripts": "1.1.1",
     "request": "^2.83.0",
     "request-promise": "^4.2.2"

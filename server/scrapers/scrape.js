@@ -8,6 +8,7 @@ var lastStartTime = new Date().getTime();
 var firstRun = true;
 
 var scrape = function(callback){
+    var currentVehicles = [],  sortedResults = [];
     var currentStartTime = new Date().getTime();
     var diffMs = currentStartTime - lastStartTime;
     var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
@@ -24,10 +25,10 @@ var scrape = function(callback){
     //Otherwise, let's go!
     if(firstRun){
         console.log("Doing first run...");
+    } else {
+        console.log("Re-scraping...");
     }
     lastStartTime = currentStartTime;
-
-    var currentVehicles = [],  sortedResults = [];
 
     var scrapers = [
         function() {
@@ -69,7 +70,6 @@ var scrape = function(callback){
             processResults();
         }
     }
-
 
     function sortByTimestamp(array) {
         return array.sort(function(a, b) {
@@ -121,5 +121,3 @@ var scrape = function(callback){
 }
 
 module.exports = scrape;
-
-

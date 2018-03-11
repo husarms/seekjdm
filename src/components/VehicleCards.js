@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import DateFormat from 'dateformat';
 
 class VehicleCards extends Component {
@@ -9,21 +10,25 @@ class VehicleCards extends Component {
         };
     }
 
+    componentWillReceiveProps(nextProps){
+        this.setState({vehicles: nextProps.vehicles});
+    }
+
     numberOfDaysBetween (date1, date2) {
-        var parsedDate1 = new Date(Date.parse(date1));
-        var parsedDate2 = new Date(Date.parse(date2));
-        var diff = Math.abs(parsedDate1.getTime() - parsedDate2.getTime());
+        const parsedDate1 = new Date(Date.parse(date1));
+        const parsedDate2 = new Date(Date.parse(date2));
+        const diff = Math.abs(parsedDate1.getTime() - parsedDate2.getTime());
         return diff / (1000 * 60 * 60 * 24);
     }
 
     isDateWithinDays(date, days){
-        var todaysDate = new Date().toISOString();
-        var daysBetween = this.numberOfDaysBetween(date, todaysDate);
+        const todaysDate = new Date().toISOString();
+        const daysBetween = this.numberOfDaysBetween(date, todaysDate);
         return daysBetween < days;
     }
 
     render() {
-        var _this = this;
+        const _this = this;
         return (
             <div>
                 <div className="mdc-layout-grid">
@@ -58,6 +63,10 @@ class VehicleCards extends Component {
             </div>
         );
     }
+}
+
+VehicleCards.propTypes = {
+    vehicles: PropTypes.array
 }
 
 export default VehicleCards;
