@@ -163,7 +163,7 @@ class App extends Component {
                                         this.state.makes &&
                                         this.state.makes.map(function (make, i) {
                                             return (
-                                                <a className="mdc-list-item" key={i} onClick={()=> _this.handleMakeClick(make)}
+                                                <a className="mdc-list-item" key={i} style={{cursor: "pointer"}} onClick={()=> _this.handleMakeClick(make)}
                                                    data-mdc-tabindex-handled="true" tabIndex="-1">
                                                     <i className="material-icons mdc-list-item__graphic" aria-hidden="true">lens</i>{make}
                                                 </a>
