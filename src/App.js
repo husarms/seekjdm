@@ -141,7 +141,7 @@ class App extends Component {
                         <div className="mdc-toolbar__row">
                             <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
                                 <a className="material-icons mdc-toolbar__menu-icon" onClick={() => this.openDrawer()}>menu</a>
-                                <span className="mdc-toolbar__title">Seek JDM</span>
+                                <span className="mdc-toolbar__title" style={{padding: "0"}}><img src="/img/seekjdm.png" style={{maxHeight: "32px"}} alt="logo"/></span>
                             </section>
                         </div>
                         {
