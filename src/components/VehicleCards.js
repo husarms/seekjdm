@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import DateFormat from 'dateformat';
+//import DateFormat from 'dateformat';
 
 class VehicleCards extends Component {
     constructor(props) {
@@ -31,7 +31,7 @@ class VehicleCards extends Component {
         const _this = this;
         return (
             <div>
-                <div className="mdc-layout-grid">
+                <div className="mdc-layout-grid" style={{maxWidth: "1280px"}}>
                     <div className="mdc-layout-grid__inner">
                         {
                             this.state.vehicles.map(function(vehicle, i){
@@ -40,18 +40,24 @@ class VehicleCards extends Component {
                                         <div className="mdc-card">
                                             <div className="mdc-card__primary-action">
                                                 <img src={vehicle.image} alt={vehicle.description} style={{width: "100%", height: "100%"}}/>
-                                                <h1 className="mdc-typography--headline">
+                                                <div style={{paddingLeft: "1rem", paddingRight: "1rem"}}>
+                                                    <h1 className="mdc-typography--headline">
+                                                        {
+                                                            _this.isDateWithinDays(vehicle.timestamp, 1) &&
+                                                            <i className="material-icons md-36" style={{color: "#FB8C00"}}>fiber_new</i>
+                                                        }
+                                                        {vehicle.description}
+                                                    </h1>
+                                                    <p className="mdc-typography--body1">{vehicle.site}</p>
                                                     {
-                                                        _this.isDateWithinDays(vehicle.timestamp, 1) &&
-                                                        <i className="material-icons md-36" style={{color: "#FB8C00"}}>fiber_new</i>
+                                                        vehicle.shortDescription !== "" &&
+                                                        <p className="mdc-typography--body1">{vehicle.shortDescription}</p>
                                                     }
-                                                    {vehicle.description}
-                                                </h1>
-                                                <p className="mdc-typography--body1">{vehicle.shortDescription !== "" ? vehicle.shortDescription : "--"}</p>
-                                                <p className="mdc-typography--body1">{vehicle.price}</p>
-                                                <p className="mdc-typography--body1">
-                                                    {DateFormat(vehicle.timestamp, "m/d/yyyy h:MM TT")}
-                                                </p>
+                                                    <p className="mdc-typography--body1">{vehicle.price}</p>
+                                                    {/*<p className="mdc-typography--body1">*/}
+                                                        {/*{DateFormat(vehicle.timestamp, "m/d/yyyy h:MM TT")}*/}
+                                                    {/*</p>*/}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

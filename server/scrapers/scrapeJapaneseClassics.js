@@ -13,16 +13,17 @@ var scrapeJapaneseClassics = function(callback){
     rp(options).then(($) => {
         $('.vehicle').each(function(i, elem) {
             var vehicle = {
-                site: "japanese-classics",
+                site: "Japanese Classics",
                 image: $(elem).find('img').attr('src'),
                 url: $(elem).find('a').attr('href'),
                 description: $(elem).find('h3').text(),
                 shortDescription: $(elem).find('.short-description').text(),
-                price: $(elem).find('.vehicle_price').text(),
+                price: $(elem).find('.vehicle_price').text().replace('Available Now: ',''),
                 isAvailable: ''
             };
-            //console.log("Adding " + vehicle.description + "...");
-            vehicles.push(vehicle);
+            if(!vehicle.price.toLowerCase().includes("sold")){
+                vehicles.push(vehicle);
+            }
         });
     }).catch((err) => {
         console.log(err);

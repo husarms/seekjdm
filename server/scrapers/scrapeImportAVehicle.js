@@ -13,7 +13,7 @@ var scrapeImportAVehicle = function(callback){
     rp(options).then(($) => {
         $('.ivi-vehicle-item').each(function(i, elem) {
             var vehicle = {
-                site: "import-a-vehicle",
+                site: "Toprank",
                 image: $(elem).find('a[style]').attr('style').replace('background-image: url(\'','').replace('\')',''),
                 url: 'https://www.importavehicle.com' + $(elem).find('a').attr('href'),
                 description: $(elem).find('a[title]').attr('title'),

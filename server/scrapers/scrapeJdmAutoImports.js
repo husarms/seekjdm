@@ -13,16 +13,20 @@ var scrapeJDMAutoImports = function (callback){
     rp(options).then(($) => {
         $('.wsite-multicol-tr').each(function(i, elem) {
             var vehicle = {
-                site: "jdm-auto-imports",
+                site: "JDM Auto Imports",
                 image: 'http://www.jdmautoimports.com' + $(elem).find('img').attr('src'),
                 url: 'http://www.jdmautoimports.com' + $(elem).find('a').attr('href'),
                 description: $(elem).find('font').first().text(),
                 shortDescription: $(elem).find('span').eq(3).text(),
                 price: $(elem).find('font').first().text().split("$")[1],
-                isAvailable: ''
+                isAvailable: $(elem).find('font:nth-child(2)').text()
             };
-            if(!vehicle.url.includes("undefined")){
-                //console.log("Adding " + vehicle.description + "...");
+            if(typeof vehicle.price !== 'undefined'){
+                vehicle.price = '$' + vehicle.price;
+            }
+            if( !vehicle.url.includes("undefined") &&
+                !vehicle.shortDescription.toLowerCase().includes("sold") &&
+                !vehicle.isAvailable.toLowerCase().includes("sold")){
                 vehicles.push(vehicle);
             }
         });
