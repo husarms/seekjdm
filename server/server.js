@@ -17,13 +17,21 @@ app.get('/api', function (req, res) {
 });
 
 app.get('/api/vehicles', (req, res) => {
-    scrapeVehicles(function(vehicleCount){
-        console.log("Vehicle count = " + vehicleCount);
-        dbHelper.GetVehicles(function(result){
-            res.set('Content-Type', 'application/json');
-            res.send({ vehicles: result });
+    dbHelper.GetVehicles(function(result){
+        res.set('Content-Type', 'application/json');
+        res.send({ vehicles: result });
+        //Rescrape
+        scrapeVehicles(function(vehicleCount){
+            console.log("Scrape completed, vehicle count = " + vehicleCount);
         });
     });
+    // scrapeVehicles(function(vehicleCount){
+    //     console.log("Vehicle count = " + vehicleCount);
+    //     dbHelper.GetVehicles(function(result){
+    //         res.set('Content-Type', 'application/json');
+    //         res.send({ vehicles: result });
+    //     });
+    // });
 });
 
 // All remaining requests return the React app, so it can handle routing.
