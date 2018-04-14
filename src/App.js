@@ -5,6 +5,7 @@ import '../node_modules/material-design-icons/iconfont/material-icons.css';
 import VehicleCards from './components/VehicleCards';
 import ProgressBar from './components/ProgressBar';
 import Constants from './components/Constants';
+// import Chips from './components/Chips';
 
 class App extends Component {
     constructor(props) {
@@ -24,14 +25,18 @@ class App extends Component {
     }
 
     componentDidMount(){
-        // Initialize material design components
-        this.mdcInit(0);
+        //Initialize material design components
+        if (window.mdc) {
+            window.mdc.autoInit(document, () => {});
+        }
         // Get vehicles
         this.fetchVehicles();
     }
     componentDidUpdate() {
-        // Re-initialize material design components
-        this.mdcInit(0);
+        //Re-initialize material design components
+        if (window.mdc) {
+            window.mdc.autoInit(document, () => {});
+        }
     }
 
     mdcInit(retries){
@@ -175,6 +180,10 @@ class App extends Component {
                         </nav>
                     </aside>
                     <main className="mdc-toolbar-fixed-adjust">
+                        {/*{*/}
+                            {/*this.state.makes &&*/}
+                            {/*<Chips items={this.state.makes}/>*/}
+                        {/*}*/}
                         {
                             this.state.filteredVehicles ?
                                 <div>

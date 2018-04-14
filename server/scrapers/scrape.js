@@ -2,6 +2,7 @@ const scrapeJapaneseClassics = require('./scrapeJapaneseClassics');
 const scrapeJDMAutoImports = require('./scrapeJdmAutoImports');
 const scrapeImportAVehicle = require('./scrapeImportAVehicle');
 const scrapeMontuMotors = require('./scrapeMontuMotors');
+const scrapeABAutosAndImports = require('./scrapeABAutosAndImports');
 const dbHelper = require('../db/dbHelper');
 const config = require('../../config');
 
@@ -55,6 +56,13 @@ var scrape = function(callback){
         },
         function() {
             scrapeMontuMotors(function (vehicles) {
+                console.log("She called me back! " + vehicles.length + " vehicles found.");
+                vehicles.map(vehicle => currentVehicles.push(vehicle));
+                scraperCallback();
+            })
+        },
+        function() {
+            scrapeABAutosAndImports(function (vehicles) {
                 console.log("She called me back! " + vehicles.length + " vehicles found.");
                 vehicles.map(vehicle => currentVehicles.push(vehicle));
                 scraperCallback();

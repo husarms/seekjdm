@@ -2,18 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Drawer extends Component {
-    componentDidMount(){
-        //Initialize material design components
-        if (window.mdc) {
-            window.mdc.autoInit(document, () => {});
-        }
-    }
-    componentDidUpdate() {
-        //Re-initialize material design components
-        if (window.mdc) {
-            window.mdc.autoInit(document, () => {});
-        }
-    }
     componentWillReceiveProps(nextProps){
         var drawer = document.querySelector('.mdc-drawer--persistent').MDCPersistentDrawer;
         if(drawer){
