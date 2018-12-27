@@ -157,10 +157,9 @@ class Vehicles extends Component {
                 <aside className="mdc-drawer mdc-drawer--temporary" data-mdc-auto-init="MDCTemporaryDrawer">
                     <nav className="mdc-drawer__drawer">
                         <header className="mdc-drawer__header">
-                            <div
-                                className="mdc-drawer__header-content mdc-theme--text-primary-on-primary mdc-theme--primary-bg">
+                            <div className="mdc-drawer__header-content mdc-theme--text-primary-on-primary mdc-theme--primary-bg">
                                 Filter by Make
-                                </div>
+                            </div>
                         </header>
                         <nav className="mdc-drawer__content mdc-list-group">
                             <div id="icon-with-text-demo" className="mdc-list">
@@ -177,15 +176,10 @@ class Vehicles extends Component {
                                 }
                             </div>
                         </nav>
-                        <header className="mdc-drawer__header">
-                            <div className="mdc-drawer__header-content mdc-theme--text-primary-on-primary mdc-theme--primary-bg">
-                                Other
-                            </div>
-                        </header>
                         <nav className="mdc-drawer__content mdc-list-group">
                             <div id="icon-with-text-demo" className="mdc-list">
                                 <a className="mdc-list-item" style={{ cursor: "pointer" }} href="/names">
-                                    Name Generator
+                                    Bonus - Name Generator
                                 </a>
                             </div>
                         </nav>
