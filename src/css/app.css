@@ -19,3 +19,7 @@ body {
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 
+.great-vibes {
+  font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
+}
+
