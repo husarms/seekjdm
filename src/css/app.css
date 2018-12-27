@@ -33,10 +33,9 @@ body {
 
 .great-vibes {
     font: 400 100px/0.8 'Great Vibes', Helvetica, sans-serif;
-    margin: 0px 0px 0px 0px;
-    padding: 70px 0px 50px 0px;
-    color: white;
-    background-color: black;
+    margin: 0px;
+    padding-top: 70px;
+    padding-bottom: 50px;
 }
 
 .center {
