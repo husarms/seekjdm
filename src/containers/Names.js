@@ -63,14 +63,6 @@ class Names extends Component {
                                             style={{ color: this.getRandomHexColor(), backgroundColor: this.getRandomHexColor() }}>
                                             {this.state.name}
                                         </h2>
-                                        <h2 className="great-vibes"
-                                            style={{ color: this.getRandomHexColor(), backgroundColor: this.getRandomHexColor() }}>
-                                            {this.state.name}
-                                        </h2>
-                                        <h2 className="great-vibes"
-                                            style={{ color: this.getRandomHexColor(), backgroundColor: this.getRandomHexColor() }}>
-                                            {this.state.name}
-                                        </h2>
                                         <p>{"(" + this.state.name + ")"}</p>
                                         <p>
                                             <button className="mdc-button mdc-button--raised" onClick={this.getAnotherName}>
