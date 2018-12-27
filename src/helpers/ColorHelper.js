@@ -6,6 +6,7 @@ function getRandomHexColor(){
 
 function getComplimentaryHexColor(hexString){
     return tinycolor2(hexString).complement().toHexString();
+}
 
 export {
     getRandomHexColor,
