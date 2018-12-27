@@ -14,6 +14,9 @@ class Names extends Component {
         this.getRandomItemFromArray = this.getRandomItemFromArray.bind(this);
         this.getAnotherName = this.getAnotherName.bind(this);
     }
+    getRandomHexColor() {
+        return '#' + Math.floor(Math.random() * 16777215).toString(16);
+    }
     getRandomItemFromArray(array) {
         return array[Math.floor(Math.random() * (array.length))];
     }
@@ -41,23 +44,38 @@ class Names extends Component {
                     <div className="mdc-toolbar__row">
                         <section className="mdc-toolbar__section mdc-toolbar__section--align-start">
                             <a href="/" className="material-icons mdc-toolbar__menu-icon">menu</a>
-                            <span className="mdc-toolbar__title" style={{ padding: "0" }}><img src="/img/seekjdm.png" style={{ maxHeight: "32px" }} alt="logo" /></span>
+                            <span className="mdc-toolbar__title" style={{ padding: "0" }}>
+                                <a href="/">
+                                    <img src="/img/seekjdm.png" style={{ maxHeight: "32px" }} alt="logo" />
+                                </a>
+                            </span>
                         </section>
                     </div>
                 </div>
                 <main className="mdc-toolbar-fixed-adjust">
-                    <div className="mdc-layout-grid">
+                    <div className="mdc-layout-grid center">
                         <div className="mdc-layout-grid__inner">
                             <div className="mdc-layout-grid__cell--span-12">
                                 <div className="mdc-card">
                                     <h2>Name Generator</h2>
                                     <div>
-                                        <h2 className="great-vibes">{this.state.name}</h2>
+                                        <h2 className="great-vibes"
+                                            style={{ color: this.getRandomHexColor(), backgroundColor: this.getRandomHexColor() }}>
+                                            {this.state.name}
+                                        </h2>
+                                        <h2 className="great-vibes"
+                                            style={{ color: this.getRandomHexColor(), backgroundColor: this.getRandomHexColor() }}>
+                                            {this.state.name}
+                                        </h2>
+                                        <h2 className="great-vibes"
+                                            style={{ color: this.getRandomHexColor(), backgroundColor: this.getRandomHexColor() }}>
+                                            {this.state.name}
+                                        </h2>
                                         <p>{"(" + this.state.name + ")"}</p>
                                         <p>
-                                            <button class="mdc-button mdc-button--raised" onClick={this.getAnotherName}>
-                                                <i class="material-icons mdc-button__icon" aria-hidden="true">refresh</i>
-                                                <span class="mdc-button__label">Generate</span>
+                                            <button className="mdc-button mdc-button--raised" onClick={this.getAnotherName}>
+                                                <i className="material-icons mdc-button__icon" aria-hidden="true">refresh</i>
+                                                <span className="mdc-button__label">Generate</span>
                                             </button>
                                         </p>
                                     </div>

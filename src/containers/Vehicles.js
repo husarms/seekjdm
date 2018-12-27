@@ -177,6 +177,18 @@ class Vehicles extends Component {
                                 }
                             </div>
                         </nav>
+                        <header className="mdc-drawer__header">
+                            <div className="mdc-drawer__header-content mdc-theme--text-primary-on-primary mdc-theme--primary-bg">
+                                Other
+                            </div>
+                        </header>
+                        <nav className="mdc-drawer__content mdc-list-group">
+                            <div id="icon-with-text-demo" className="mdc-list">
+                                <a className="mdc-list-item" style={{ cursor: "pointer" }} href="/names">
+                                    Name Generator
+                                </a>
+                            </div>
+                        </nav>
                     </nav>
                 </aside>
                 <main className="mdc-toolbar-fixed-adjust">

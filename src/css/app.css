@@ -14,12 +14,44 @@ body {
  */
 
 /* Rules for sizing the icon. */
-.material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; }
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }
 
-.great-vibes {
-  font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
+.material-icons.md-18 {
+    font-size: 18px;
 }
 
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+.great-vibes {
+    font: 400 110px/0.8 'Great Vibes', Helvetica, sans-serif;
+    margin: 0px 0px 0px 0px;
+    padding: 70px 0px 50px 0px;
+    color: white;
+    background-color: black;
+}
+
+.center {
+    margin: auto;
+    width: 100%;
+}
+
+@media (min-width:961px)  { 
+    .center {
+        width: 75%;
+    }
+
+}
+@media (min-width:1400px)  { 
+    .center {
+        width: 50%;
+    }
+}
