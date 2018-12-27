@@ -3,19 +3,23 @@ import '../css/app.css';
 import '../../node_modules/material-components-web/dist/material-components-web.min.css';
 import '../../node_modules/material-design-icons/iconfont/material-icons.css';
 import { names } from '../constants';
+import { getRandomHexColor, getComplimentaryHexColor} from '../helpers/ColorHelper';
 
 class Names extends Component {
     constructor(props) {
         super(props);
         var initialName = this.getName();
+        var primaryColor = getRandomHexColor();
+        var secondaryColor = getRandomHexColor();
+        var shadowColor = getComplimentaryHexColor(secondaryColor);
         this.state = {
-            name: initialName
+            name: initialName,
+            primaryColor: primaryColor,
+            secondaryColor: secondaryColor,
+            shadowColor: shadowColor
         }
         this.getRandomItemFromArray = this.getRandomItemFromArray.bind(this);
         this.getAnotherName = this.getAnotherName.bind(this);
-    }
-    getRandomHexColor() {
-        return '#' + Math.floor(Math.random() * 16777215).toString(16);
     }
     getRandomItemFromArray(array) {
         return array[Math.floor(Math.random() * (array.length))];
@@ -33,8 +37,14 @@ class Names extends Component {
     }
     getAnotherName() {
         var name = this.getName();
+        var primaryColor = getRandomHexColor();
+        var secondaryColor = getRandomHexColor();
+        var shadowColor = getComplimentaryHexColor(secondaryColor);
         this.setState({
-            name: name
+            name: name,
+            primaryColor: primaryColor,
+            secondaryColor: secondaryColor,
+            shadowColor: shadowColor
         });
     }
     render() {
@@ -60,7 +70,10 @@ class Names extends Component {
                                     <h2>Name Generator</h2>
                                     <div>
                                         <h2 className="great-vibes"
-                                            style={{ color: this.getRandomHexColor(), backgroundColor: this.getRandomHexColor() }}>
+                                            style={{ 
+                                                color: this.state.primaryColor, 
+                                                backgroundColor: this.state.secondaryColor,
+                                                textShadow: '2px 2px ' +  this.state.shadowColor}}>
                                             {this.state.name}
                                         </h2>
                                         <p>{"(" + this.state.name + ")"}</p>
