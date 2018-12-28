@@ -1,30 +1,30 @@
 const rp = require('request-promise');
 const cheerio = require('cheerio');
 
-var scrapeMontuMotors = function(callback){
+var scrapeMontuMotors = function (callback) {
     console.log("Scraping Montu Motors...");
     var vehicles = [];
     const options = {
-        uri: 'https://www.montumotors.com/vehicles',
+        uri: 'https://montumotors.com/inventory-feed/?type=Current',
         transform: function (body) {
             return cheerio.load(body);
         }
     };
     rp(options).then(($) => {
-        $('.montu-inventory-link').each(function(i, elem) {
+        $('.ft-item').each(function (i, elem) {
             var vehicle = {
                 site: "Montu Motors",
-                image: $(elem).find('.montu-lead-photo').attr('style').replace('background-image: url(','').replace(')',''),
-                url: 'https://www.montumotors.com' + $(elem).attr('href'),
-                description: $(elem).find('.year').text() + " " + $(elem).find('.make').text() + " " + $(elem).find('.model').text(),
+                image: $(elem).find('.cover-bkg').attr('style').replace('background-image:url(', '').replace(')', ''),
+                url: 'https://www.montumotors.com' + $(elem).find('.absolute-link').attr('href'),
+                description: $(elem).find('.info').find('a').text(),
                 shortDescription: '',
-                price: $(elem).find('.price').text(),
+                price: $(elem).find('.price').text().trim(),
                 isAvailable: ''
             };
             vehicles.push(vehicle);
         });
     }).catch((err) => {
-            console.log(err);
+        console.log(err);
     }).then(() => {
         callback(vehicles);
     });

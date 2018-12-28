@@ -25,6 +25,7 @@
     "tinycolor2": "^1.4.1"
   },
   "scripts": {
+    "scrape": "node server/scrapers/runScrape.js",
     "start": "node server/server.js",
     "start-client": "react-scripts start",
     "start-server": "node server/server.js",

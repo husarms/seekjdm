@@ -1,9 +1,11 @@
-const scrapeJapaneseClassics = require('./scrapeJapaneseClassics');
-const scrapeJDMAutoImports = require('./scrapeJdmAutoImports');
-const scrapeImportAVehicle = require('./scrapeImportAVehicle');
-const scrapeMontuMotors = require('./scrapeMontuMotors');
 const scrapeABAutosAndImports = require('./scrapeABAutosAndImports');
+const scrapeImportAVehicle = require('./scrapeImportAVehicle');
+const scrapeJapaneseClassics = require('./scrapeJapaneseClassics');
+const scrapeJapStarImports = require('./scrapeJapStarImports');
+const scrapeJDMAutoImports = require('./scrapeJdmAutoImports');
+const scrapeMontuMotors = require('./scrapeMontuMotors');
 const scrapeRHDSpecialties = require('./scrapeRHDSpecialties');
+const scrapeShinkuClassics = require('./scrapeShinkuClassics');
 const dbHelper = require('../db/dbHelper');
 const config = require('../../config');
 
@@ -50,15 +52,8 @@ var scrape = function (callback) {
             
         var scrapers = [
             function () {
-                scrapeJDMAutoImports(function (vehicles) {
-                    console.log("Scrape JDM Auto Imports complete. " + vehicles.length + " vehicles found.");
-                    vehicles.map(vehicle => currentVehicles.push(vehicle));
-                    scraperCallback();
-                })
-            },
-            function () {
-                scrapeJapaneseClassics(function (vehicles) {
-                    console.log("Scrape Japanese Classics complete. " + vehicles.length + " vehicles found.");
+                scrapeABAutosAndImports(function (vehicles) {
+                    console.log("Scrape AB Autos and Imports complete. " + vehicles.length + " vehicles found.");
                     vehicles.map(vehicle => currentVehicles.push(vehicle));
                     scraperCallback();
                 })
@@ -71,6 +66,27 @@ var scrape = function (callback) {
                 })
             },
             function () {
+                scrapeJapaneseClassics(function (vehicles) {
+                    console.log("Scrape Japanese Classics complete. " + vehicles.length + " vehicles found.");
+                    vehicles.map(vehicle => currentVehicles.push(vehicle));
+                    scraperCallback();
+                })
+            },
+            function () {
+                scrapeJapStarImports(function (vehicles) {
+                    console.log("Scrape Jap Star Imports complete. " + vehicles.length + " vehicles found.");
+                    vehicles.map(vehicle => currentVehicles.push(vehicle));
+                    scraperCallback();
+                })
+            },
+            function () {
+                scrapeJDMAutoImports(function (vehicles) {
+                    console.log("Scrape JDM Auto Imports complete. " + vehicles.length + " vehicles found.");
+                    vehicles.map(vehicle => currentVehicles.push(vehicle));
+                    scraperCallback();
+                })
+            },
+            function () {
                 scrapeMontuMotors(function (vehicles) {
                     console.log("Scrape Montu Motors complete. " + vehicles.length + " vehicles found.");
                     vehicles.map(vehicle => currentVehicles.push(vehicle));
@@ -78,15 +94,15 @@ var scrape = function (callback) {
                 })
             },
             function () {
-                scrapeABAutosAndImports(function (vehicles) {
-                    console.log("Scrape AB Autos and Imports complete. " + vehicles.length + " vehicles found.");
+                scrapeRHDSpecialties(function (vehicles) {
+                    console.log("Scrape RHD Specialties complete. " + vehicles.length + " vehicles found.");
                     vehicles.map(vehicle => currentVehicles.push(vehicle));
                     scraperCallback();
                 })
             },
             function () {
-                scrapeRHDSpecialties(function (vehicles) {
-                    console.log("Scrape RHD Specialties complete. " + vehicles.length + " vehicles found.");
+                scrapeShinkuClassics(function (vehicles) {
+                    console.log("Scrape Shinku Classics complete. " + vehicles.length + " vehicles found.");
                     vehicles.map(vehicle => currentVehicles.push(vehicle));
                     scraperCallback();
                 })
