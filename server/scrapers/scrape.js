@@ -20,10 +20,11 @@ var scrape = function (callback) {
         const diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
         const scrapeInterval = parseInt(config.scrapeInterval);
         
+        console.log("Scrape last ran at " + lastStartTime.toISOString() + ", current time is " + currentStartTime.toISOString() + ".");
+        console.log(diffMins + " minutes since last scrape, interval set to " + scrapeInterval + " minutes.");
+
         //Only re-scrape after a set amount of time has passed
         if (diffMins < scrapeInterval) {
-            console.log("Scrape last ran " + diffMins + " minutes ago, scrape interval set to " +
-                scrapeInterval + " minutes, returning...");
             callback(0);
             return;
         }
