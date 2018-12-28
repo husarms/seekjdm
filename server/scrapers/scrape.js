@@ -20,10 +20,9 @@ var scrape = function (callback) {
         const diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
         const scrapeInterval = parseInt(config.scrapeInterval);
         
+        //Only re-scrape after a set amount of time has passed
         console.log("Scrape last ran at " + lastStartTime.toISOString() + ", current time is " + currentStartTime.toISOString() + ".");
         console.log(diffMins + " minutes since last scrape, interval set to " + scrapeInterval + " minutes.");
-
-        //Only re-scrape after a set amount of time has passed
         if (diffMins < scrapeInterval) {
             callback(0);
             return;
@@ -35,42 +34,42 @@ var scrape = function (callback) {
         var scrapers = [
             function () {
                 scrapeJDMAutoImports(function (vehicles) {
-                    console.log("She called me back! " + vehicles.length + " vehicles found.");
+                    console.log("Scrape JDM Auto Imports complete. " + vehicles.length + " vehicles found.");
                     vehicles.map(vehicle => currentVehicles.push(vehicle));
                     scraperCallback();
                 })
             },
             function () {
                 scrapeJapaneseClassics(function (vehicles) {
-                    console.log("She called me back! " + vehicles.length + " vehicles found.");
+                    console.log("Scrape Japanese Classics complete. " + vehicles.length + " vehicles found.");
                     vehicles.map(vehicle => currentVehicles.push(vehicle));
                     scraperCallback();
                 })
             },
             function () {
                 scrapeImportAVehicle(function (vehicles) {
-                    console.log("She called me back! " + vehicles.length + " vehicles found.");
+                    console.log("Scrape Import a Vehicle complete. " + vehicles.length + " vehicles found.");
                     vehicles.map(vehicle => currentVehicles.push(vehicle));
                     scraperCallback();
                 })
             },
             function () {
                 scrapeMontuMotors(function (vehicles) {
-                    console.log("She called me back! " + vehicles.length + " vehicles found.");
+                    console.log("Scrape Montu Motors complete. " + vehicles.length + " vehicles found.");
                     vehicles.map(vehicle => currentVehicles.push(vehicle));
                     scraperCallback();
                 })
             },
             function () {
                 scrapeABAutosAndImports(function (vehicles) {
-                    console.log("She called me back! " + vehicles.length + " vehicles found.");
+                    console.log("Scrape AB Autos and Imports complete. " + vehicles.length + " vehicles found.");
                     vehicles.map(vehicle => currentVehicles.push(vehicle));
                     scraperCallback();
                 })
             },
             function () {
                 scrapeRHDSpecialties(function (vehicles) {
-                    console.log("She called me back! " + vehicles.length + " vehicles found.");
+                    console.log("Scrape RHD Specialties complete. " + vehicles.length + " vehicles found.");
                     vehicles.map(vehicle => currentVehicles.push(vehicle));
                     scraperCallback();
                 })
