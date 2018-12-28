@@ -43,7 +43,7 @@ class VehicleCards extends Component {
                                                 <div style={{paddingLeft: "1rem", paddingRight: "1rem"}}>
                                                     <h1 className="mdc-typography--headline">
                                                         {
-                                                            _this.isDateWithinDays(vehicle.timestamp, 1) &&
+                                                            _this.isDateWithinDays(vehicle.insertTimestamp, 1) &&
                                                             <i className="material-icons md-36" style={{color: "#FB8C00"}}>fiber_new</i>
                                                         }
                                                         {vehicle.description}
@@ -55,7 +55,7 @@ class VehicleCards extends Component {
                                                     }
                                                     <p className="mdc-typography--body1">{vehicle.price}</p>
                                                     {/*<p className="mdc-typography--body1">*/}
-                                                        {/*{DateFormat(vehicle.timestamp, "m/d/yyyy h:MM TT")}*/}
+                                                        {/*{DateFormat(vehicle.insertTimestamp, "m/d/yyyy h:MM TT")}*/}
                                                     {/*</p>*/}
                                                 </div>
                                             </div>
