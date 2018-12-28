@@ -10,6 +10,7 @@
     "express": "^4.16.2",
     "material-components-web": "^0.32.0",
     "material-design-icons": "^3.0.1",
+    "memory-cache": "^0.2.0",
     "mongodb": "^3.0.4",
     "path": "^0.12.7",
     "prop-types": "^15.6.1",
