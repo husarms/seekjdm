@@ -39,7 +39,7 @@ class VehicleCards extends Component {
                                     <div key={i} className="mdc-layout-grid__cell" onClick={() => window.open(vehicle.url)}>
                                         <div className="mdc-card">
                                             <div className="mdc-card__primary-action">
-                                                <img src={vehicle.image} alt={vehicle.description} style={{width: "100%", height: "100%"}}/>
+                                                <img src={vehicle.image} alt={vehicle.description} style={{width: "100%"}}/>
                                                 <div style={{paddingLeft: "1rem", paddingRight: "1rem"}}>
                                                     <h1 className="mdc-typography--headline">
                                                         {
